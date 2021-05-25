@@ -47,6 +47,7 @@
     "core-js": "^3.6.5",
     "css-vars-ponyfill": "^2.3.1",
     "file-system": "^2.2.2",
+    "flyd": "^0.2.8",
     "font-awesome": "^4.7.0",
     "fs-extra": "^8.1.0",
     "iframe-resizer": "^4.1.1",
@@ -54,8 +55,11 @@
     "libphonenumber-js": "^1.7.51",
     "lodash.clonedeep": "^4.5.0",
     "merge-options": "^2.0.0",
+    "ramda": "^0.27.1",
     "remove-files-webpack-plugin": "^1.4.3",
-    "underscore.string": "3.3.5"
+    "snabbdom": "^3.0.1",
+    "underscore.string": "3.3.5",
+    "union-type": "^0.4.1"
   },
   "engines": {
     "node": ">=10"

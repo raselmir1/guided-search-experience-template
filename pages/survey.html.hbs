@@ -1,0 +1,44 @@
+{{#> layouts/html pageWrapperCss="survey"}}
+  <script id="survey-config" data-data='{{{json survey}}}'></script>
+  <div class="Survey-wrapper">
+    <div class="js-surveyWrapper u-hidden">
+      <div class="js-survey u-hidden"></div>
+    </div>
+    <div class="Survey-landing js-landing">
+      <div class="Survey-col">
+        <div class="Survey-title">
+          {{survey.title}}
+        </div>
+        <div class="Survey-description">
+          {{survey.subtitle}}
+        </div>
+        <button class="Survey-start js-start">{{survey.getStartedText}}</button>
+      </div>
+      <img class="Survey-img" src="{{survey.image}}" alt="">
+    </div>
+    <div class="Footer">
+      <img src="/static/assets/images/yext-logo.svg" alt="">
+    </div>
+  </div>
+
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
+  <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js"></script>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css" type="text/css">
+
+  <script>
+    {{#babel}}
+      const startBtn = document.querySelector('.js-start');
+      const surveyEl = document.querySelector('.js-surveyWrapper');
+      const landingEl = document.querySelector('.js-landing');
+
+      startBtn.addEventListener('click', () => {
+        landingEl.classList.add('u-hidden');
+        surveyEl.classList.remove('u-hidden');
+      });
+
+    mapboxgl.accessToken = 'pk.eyJ1IjoieWV4dCIsImEiOiJqNzVybUhnIn0.hTOO5A1yqfpN42-_z_GuLw';
+    {{/babel}}
+  </script>
+  <script src="/survey.js"></script>
+{{/layouts/html }}

@@ -5,6 +5,8 @@
 !public/iframe_test.html
 !public/overlay.html
 public/
+desktop/
+node_modules/
 config/
 pages/
 cards/

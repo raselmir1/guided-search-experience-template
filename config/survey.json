@@ -1,0 +1,73 @@
+{
+  "verticalKey": "survey",
+  "pageTitle": "Survey",
+  "survey": {
+    // title is the bold text that appears on the survey landing page
+    "title": "With Silver Financial, you can achieve your financial goals.",
+    // subtitle is the text that appears on the survey landing page under the title
+    "subtitle": "Our experts are here to make dreams a reality.",
+    // getStartedText is the text that will be displayed on the button on the landing page that initiates the experience
+    "getStartedText": "find your advisor",
+    // image is the url for an image that appears on the survey landing page
+    "image": "/static/assets/images/landing.png",
+    // queryBase is text that should always appear in the search
+    "queryBase": "advisor",
+    // vertical is the url that the search should be done on
+    "vertical": "advisors.html",
+    // questions is the list of questions to include in the survey.
+    // Each question can have 4 properties
+    // 1. 'question' is the prompt the use will see
+    // 2. type is what type of input should be used: text, radio, or checkbox
+    // 3. options are required for radio or checkbox inputs
+    // 4. format described how the answer will be incorporated into the final query that's constructed
+    //    the answers that the user provides will be substituted for the %s in the format string
+    //    and then that string will be appended to the existing query
+    "questions": [{
+      "question": "Where do you live?",
+      "type": "text",
+      "format": "near %s",
+      "autocomplete": true
+    },
+    {
+      "question": "What is your native language?",
+      "options": ["English", "Spanish", "French"],
+      "columns": 3,
+      "type": "radio",
+      "format": "who speaks %s"
+    },
+    {
+      "question": "What are your primary investment goals?",
+      "options": ["Estate Planning", "Executive Pay and Benefits", "Philanthropy and Charitable Giving", "Retirement", "Education", "Emergency Fund", "Living Debt Free", "Life Insurance", "Long-term Care Insurance", "Leaving a Legacy", "Major Purchase"],
+      "columns": 2,
+      "type": "checkbox",
+      "format": "and offers %s"
+    },
+    {
+      "question": "How much are you considering investing with a financial advisor?",
+      "options": ["Less than $50,000", "$50,000-$250,000", "$250,000-$750,000", "$750,000-$2,000,000", "Greater than $2,000,000", "I prefer not to share"],
+      "columns": 1,
+      "type": "radio",
+      "format": "with level of investment %s" 
+    },
+    {
+      "question": "What advising style would you prefer?",
+      "columns": 3,
+      "options": [
+        {
+          "text": "Direct",
+          "details": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis."
+        },
+        {
+          "text": "Supporting",
+          "details": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis."
+        },
+        {
+          "text": "Coaching",
+          "details": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis."
+        }
+      ],
+      "type": "radiodetails",
+      "format": "with advising style %s"
+    }]
+  }
+}
