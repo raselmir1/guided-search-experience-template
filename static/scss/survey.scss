@@ -235,6 +235,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      width: 100%;
     }
 
     &-optionLabel {
@@ -245,6 +246,7 @@
       padding-bottom: 8px;
       padding-left: 16px;
       padding-right: 16px;
+      width: 100%;
     }
 
     &-option--detailed {
