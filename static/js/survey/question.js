@@ -12,7 +12,7 @@ import geoSVG from '../../assets/images/geo.svg';
 // {
 //   question: string
 //   type: text | radio | checkbox
-//   options: []{text: string, details: string, selected: bool}
+//   options: []{text: string, details: string, selected: bool, image: string}
 //   response: string
 //   autocomplete: bool
 // }
@@ -70,13 +70,22 @@ const textView = (action$, state) => {
 const baseOptionView = (action$, state, actionConstructor) => {
   const columns = state.isMobile ? 1 : state.columns || 1;
   return h('div.Question-options', {
-    style: {gridTemplateColumns: `repeat(${columns}, auto)`},
+    style: {gridTemplateColumns: `repeat(${columns}, 1fr)`},
   }, 
-    state.options.map((opt, i) => h('button.Question-option', {
-      props: {type: 'button'},
-      class: {'is-selected': opt.selected},
-      on: {click: () => action$(actionConstructor(i))}
-    }, [opt.text])),
+    state.options.map((opt, i) => {
+      const optText = h('div.Question-optionLabel', {}, opt.text)
+      const optChildren = opt.image ? 
+        [h('div.Question-optionImgWrapper', {}, [
+          h('img.Question-optionImg', {props: {src: opt.image}}) 
+        ]), optText] :
+        [optText];
+
+      return h('button.Question-option', {
+        props: {type: 'button'},
+        class: {'is-selected': opt.selected},
+        on: {click: () => action$(actionConstructor(i))}
+      }, optChildren)
+    }),
   );
 }
 

@@ -1,0 +1,27 @@
+{
+    "verticalKey": "landing",
+    "pageTitle": "Landing",
+    "landing": {
+        // title is the bold text that appears on the survey landing page
+        "title": "With Silver Financial, you can achieve your financial goals.",
+        // subtitle is the text that appears on the survey landing page under the title
+        "subtitle": "Our experts are here to make dreams a reality.",
+        // image is the url for an image that appears on the survey landing page
+        "image": "/static/assets/images/landing.png",
+        "links": [
+          {
+            "text": "find your advisor",
+            "url": "/advisor-survey.html"
+          },
+          {
+            "text": "Find a credit card",
+            "url": "/creditcard-survey.html"
+          },
+          {
+            "text": "Find a mortgage",
+            "url": "/mortgage-survey.html"
+          }
+        ]
+    },
+    "verticalsToConfig": {}
+  }

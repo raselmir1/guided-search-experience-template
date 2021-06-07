@@ -1,31 +1,33 @@
 {{#> layouts/html pageWrapperCss="survey"}}
   <script id="survey-config" data-data='{{{json survey}}}'></script>
-  <div class="Survey-wrapper">
+  <div class="Landing">
+    <div class="Landing-core">
+      <div class="Landing-col">
+        <div class="Landing-title">
+          {{landing.title}}
+        </div>
+        <div class="Landing-description">
+          {{landing.subtitle}}
+        </div>
+      </div>
+
+      {{#if landing.image}}
+      <img class="Landing-img" src="{{landing.image}}" alt="two people high five">
+      {{/if}}
+    </div>
     <div class="search_form"></div>
-    <div class="js-surveyWrapper">
-      <div class="js-survey"></div>
+    <div class="Landing-divider">
+      or
+    </div>
+    <div class="Landing-links">
+      {{#each landing.links~}}
+        <a href="{{this.url}}" class="Landing-link">{{this.text}}</a>
+      {{~/each}}
     </div>
     <div class="Footer">
       <img src="/static/assets/images/yext-logo.svg" alt="">
     </div>
   </div>
-
-  <script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
-  <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js"></script>
-  <link href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css" type="text/css">
-  <link
-    rel="stylesheet"
-    type="text/css"
-    href="https://assets.sitescdn.net/answers-search-bar/v1.0/answers.css"
-  />
-
-  <script>
-    {{#babel}}
-    mapboxgl.accessToken = 'pk.eyJ1IjoieWV4dCIsImEiOiJqNzVybUhnIn0.hTOO5A1yqfpN42-_z_GuLw';
-    {{/babel}}
-  </script>
-  <script src="/survey.js"></script>
 
   <script src="https://assets.sitescdn.net/answers-search-bar/v1.0/answerstemplates.compiled.min.js"></script>
   <script>
@@ -41,7 +43,7 @@
           ANSWERS.addComponent("SearchBar", {
             container: ".search_form",
             name: "search-bar", //Must be unique for every search bar on the same page
-            redirectUrl: "{{survey.vertical}}",
+            redirectUrl: "<REPLACE_ME>",
             placeholderText: "Search...",
           });
         },

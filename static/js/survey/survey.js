@@ -29,8 +29,10 @@ const init = () => {
   for (const q of surveyConfig.questions) {
     q.options = (q.options || []).map(opt => {
       if (typeof opt === 'string') {
-        return {text: opt, details: '', selected: false};
+        return {text: opt, details: '', selected: false, image: ''};
       }
+      // preload images so they don't flash when we transition between pages
+      new Image().src = opt.image;
       return {...opt, selected: false}
     });
   }
@@ -62,7 +64,7 @@ function constructQuery(state) {
 }
 
 const surveyView = R.curry((action$, state) => {
-  const queryUrl = `/${state.vertical}?query=${constructQuery(state)}&survey=1`;
+  const queryUrl = `/${state.vertical}?query=${encodeURIComponent(constructQuery(state))}`;
   const submitButton = h('a.Survey-submit', { props: { href: queryUrl } }, ['Submit']);
   const rightButton =  h('button.Survey-right', { 
         style: {backgroundImage: `url(${arrowRightSVG})`},
@@ -106,7 +108,13 @@ const update = (state, action) => {
     MoveLeft: (state) => ({ ...state, activeQuestion: Math.max(0, state.activeQuestion - 1) }),
     MoveRight: (state) => ({ ...state, activeQuestion: Math.min(state.questions.length - 1, state.activeQuestion + 1) }),
     UpdateQuestion: (data, state) => {
-      return { ...state, questions: state.questions.map((q, idx) => idx === data.idx ? Question.update(q, data.action) : q)}
+      const searchbar = document.querySelector('.js-yext-query');
+      const newState = { ...state, questions: state.questions.map((q, idx) => idx === data.idx ? Question.update(q, data.action) : q)}
+      if (searchbar) {
+        searchbar.value = constructQuery(newState);
+        searchbar.scrollLeft = searchbar.scrollWidth;
+      }
+      return newState;
     },
   }, action, state)
 }

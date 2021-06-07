@@ -1,3 +1,30 @@
+.u-hidden {
+  display: none !important;
+}
+
+.YxtPage-wrapper.survey {
+  .yxt-SearchBar {
+    margin-top: 50px;
+  }
+
+  .YxtPage-content {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.Footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  margin-top: 45px;
+
+  @include bpgte(sm) {
+    margin-top: 150px;
+  }
+}
+
 @mixin hover-shadow() {
   &:hover {
     box-shadow: var(--yxt-survey-box-shadow);
@@ -24,76 +51,12 @@
 
   @include bpgte(sm) {
     width: 695px;
-    margin-top: 100px;
+    margin-top: 10px;
   }
 
   &-wrapper {
     display: flex;
     flex-direction: column;
-  }
-
-  &-landing {
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: center;
-    margin-top: 60px;
-
-    @include bpgte(sm) {
-      flex-direction: row;
-      margin-top: 100px;
-    }
-  }
-
-  &-landing {
-    width: 100%;
-    padding: 20px;
-
-    @include bpgte(sm) {
-      width: 725px;
-    }
-  }
-
-  &-img {
-    height: 151px;
-    width: 151px;
-    margin-bottom: 30px;
-
-    @include bpgte(sm) {
-      height: 277px;
-      width: 277px;
-    }
-  }
-
-  &-col {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    @include bplte(xs) {
-      text-align: center;
-    }
-
-    @include bpgte(sm) {
-      align-items: flex-start;
-      margin-right: 20px;
-    }
-  }
-
-  &-title {
-    font-size: 28px;
-    font-weight: var(--yxt-font-weight-bold);
-    margin-bottom: 30px;
-
-    @include bpgte(sm) {
-      font-size: 36px;
-    }
-  }
-
-  &-start {
-    @include btn;
-
-    text-transform: uppercase;
-    font-weight: var(--yxt-font-weight-bold);
   }
 
   &-description {
@@ -247,12 +210,10 @@
     }
 
     &-option {
+      display: flex;
+      flex-direction: column;
       border-radius: 4px;
       background-color: white;
-      padding-top: 8px;
-      padding-bottom: 8px;
-      padding-left: 16px;
-      padding-right: 16px;
       margin-top: 4px;
       margin-bottom: 4px;
       margin-left: 2px;
@@ -262,6 +223,28 @@
       transition: top 0.3s ease;
 
       @include hover-shadow;
+    }
+
+    &-optionImg {
+      object-fit: cover;
+      width: 130px;
+    }
+
+    &-optionImgWrapper {
+      height: 230px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &-optionLabel {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      padding-left: 16px;
+      padding-right: 16px;
     }
 
     &-option--detailed {
@@ -292,6 +275,7 @@
       color: var(--yxt-survey-color-primary);
       margin-top: 12px;
       margin-bottom: 12px;
+      width: 100%;
     }
 
     &-optionDetails {
@@ -305,25 +289,102 @@
   }
 }
 
-.YxtPage-wrapper.survey {
-  .YxtPage-content {
-    display: flex;
-    justify-content: center;
+.Landing {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 20px;
+  margin-top: 60px;
+
+  @include bpgte(sm) {
+    margin-top: 100px;
+    width: 725px;
   }
 
-  .u-hidden {
-    display: none !important;
-  }
-
-  .Footer {
+  &-divider {
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding: 16px;
-    margin-top: 45px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+
+  &-links {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
 
     @include bpgte(sm) {
-      margin-top: 150px;
+      flex-direction: row;
+    }
+  }
+
+  &-link {
+    @include btn;
+
+    text-transform: uppercase;
+    font-weight: var(--yxt-font-weight-bold);
+    width: 100%;
+    text-align: center;
+
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+
+    @include bpgte(sm) {
+      width: auto;
+      text-align: left;
+
+      &:not(:last-child) {
+        margin-bottom: 0;
+        margin-right: 10px;
+      }
+    }
+  }
+
+  &-core {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+
+    @include bpgte(sm) {
+      flex-direction: row;
+    }
+  }
+
+  &-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include bplte(xs) {
+      text-align: center;
+    }
+
+    @include bpgte(sm) {
+      align-items: flex-start;
+      margin-right: 20px;
+    }
+  }
+
+  &-title {
+    font-size: 28px;
+    font-weight: var(--yxt-font-weight-bold);
+    margin-bottom: 30px;
+
+    @include bpgte(sm) {
+      font-size: 36px;
+    }
+  }
+
+  &-img {
+    height: 151px;
+    width: 151px;
+    margin-bottom: 30px;
+
+    @include bpgte(sm) {
+      height: 277px;
+      width: 277px;
     }
   }
 }
